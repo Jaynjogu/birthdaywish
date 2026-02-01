@@ -1,0 +1,1544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy 22nd Birthday, My Love ❤️</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:wght@400;700&family=Inter:wght@300;400&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0a14;
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .hero-container {
+            width: 100%;
+            max-width: 1200px;
+            height: 90vh;
+            min-height: 700px;
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(255, 105, 180, 0.3);
+        }
+        
+        /* Background with parallax effect */
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, 
+                rgba(255, 182, 193, 0.2) 0%, 
+                rgba(221, 160, 221, 0.25) 25%, 
+                rgba(216, 191, 216, 0.3) 50%, 
+                rgba(255, 215, 0, 0.15) 75%, 
+                rgba(255, 192, 203, 0.2) 100%);
+            z-index: 1;
+            will-change: transform;
+        }
+        
+        /* Floating particles */
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
+        }
+        
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.6);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+            animation: float 15s infinite linear;
+        }
+        
+        .heart {
+            position: absolute;
+            color: #ff69b4;
+            font-size: 20px;
+            opacity: 0.7;
+            animation: floatHearts 20s infinite linear;
+            text-shadow: 0 0 10px rgba(255, 105, 180, 0.7);
+            z-index: 2;
+        }
+        
+        /* Content section */
+        .content {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        /* Birthday Number Styling */
+        .birthday-number {
+            font-family: 'Dancing Script', cursive;
+            font-size: 10rem;
+            font-weight: 700;
+            color: #ffd700;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
+            margin-bottom: -20px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1.5s ease forwards 0.3s;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .birthday-number::before, .birthday-number::after {
+            content: '🎂';
+            font-size: 4rem;
+            margin: 0 20px;
+            animation: bounce 2s infinite ease-in-out;
+        }
+        
+        .main-text {
+            font-family: 'Dancing Script', cursive;
+            font-size: 5.5rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 20px;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1.5s ease forwards 0.5s;
+            position: relative;
+            padding: 0 20px;
+        }
+        
+        .main-text::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #ff69b4, #ffd700, #ff69b4, transparent);
+            border-radius: 2px;
+            animation: glowPulse 3s infinite ease-in-out;
+        }
+        
+        .subtext {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 700px;
+            line-height: 1.6;
+            margin-bottom: 50px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1.5s ease forwards 1s;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Candle Container */
+        .candle-container {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            z-index: 5;
+            opacity: 0;
+            animation: fadeInUp 1.5s ease forwards 2s;
+        }
+        
+        .candle {
+            width: 30px;
+            height: 100px;
+            background: linear-gradient(to bottom, #fff 0%, #ffeb3b 30%, #ff9800 100%);
+            border-radius: 15px 15px 5px 5px;
+            margin: 0 15px;
+            position: relative;
+            box-shadow: 0 0 20px rgba(255, 152, 0, 0.5);
+            animation: candleFloat 4s infinite ease-in-out;
+        }
+        
+        .candle:nth-child(2n) {
+            animation-delay: 0.5s;
+            height: 110px;
+        }
+        
+        .candle:nth-child(3n) {
+            animation-delay: 1s;
+            height: 90px;
+        }
+        
+        .candle:nth-child(4n) {
+            animation-delay: 1.5s;
+            height: 105px;
+        }
+        
+        .candle:nth-child(5n) {
+            animation-delay: 2s;
+            height: 95px;
+        }
+        
+        .candle::before {
+            content: '';
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 30px;
+            background: #ff5722;
+            border-radius: 10px 10px 5px 5px;
+        }
+        
+        .flame {
+            position: absolute;
+            top: -45px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 15px;
+            height: 40px;
+            background: linear-gradient(to top, #ff5722 0%, #ffeb3b 70%, #fff 100%);
+            border-radius: 50% 50% 20% 20%;
+            animation: flameFlicker 0.5s infinite alternate;
+            box-shadow: 0 0 30px rgba(255, 87, 34, 0.8);
+        }
+        
+        .flame::after {
+            content: '';
+            position: absolute;
+            top: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 10px;
+            height: 15px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            filter: blur(5px);
+        }
+        
+        /* CTA Button */
+        .cta-button {
+            background: linear-gradient(135deg, #ff69b4, #ff1493);
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            font-size: 1.3rem;
+            font-weight: 500;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1.5s ease forwards 1.5s;
+            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.4);
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+            overflow: hidden;
+            z-index: 11;
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.7s ease;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(255, 105, 180, 0.6);
+            letter-spacing: 1px;
+        }
+        
+        .cta-button:hover::before {
+            left: 100%;
+        }
+        
+        /* Glassmorphism card */
+        .glass-card {
+            position: absolute;
+            bottom: 180px;
+            right: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 25px;
+            width: 300px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transform: translateX(30px);
+            animation: fadeInRight 1.5s ease forwards 2s;
+            z-index: 10;
+        }
+        
+        .glass-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+        
+        .glass-card p {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        /* Music toggle */
+        .music-toggle {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            z-index: 20;
+            transition: all 0.3s ease;
+        }
+        
+        .music-toggle:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
+        
+        .music-toggle i {
+            font-size: 1.5rem;
+            color: #fff;
+        }
+        
+        /* Song Info */
+        .song-info {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            border-radius: 15px;
+            padding: 15px;
+            max-width: 250px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            z-index: 20;
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: fadeInUp 1.5s ease forwards 2.5s;
+        }
+        
+        .song-info h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+        
+        .song-info p {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.4;
+        }
+        
+        /* Lyrics Display */
+        .lyrics-container {
+            position: absolute;
+            top: 110px;
+            left: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            width: 300px;
+            max-height: 200px;
+            overflow-y: auto;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: fadeInUp 1.5s ease forwards 3s;
+        }
+        
+        .lyrics-container h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .lyrics-content {
+            font-size: 0.85rem;
+            line-height: 1.5;
+            color: rgba(255, 255, 255, 0.85);
+        }
+        
+        .lyrics-line {
+            margin-bottom: 8px;
+            padding-left: 10px;
+            border-left: 2px solid rgba(255, 105, 180, 0.5);
+            transition: all 0.3s ease;
+        }
+        
+        .lyrics-line.active {
+            color: #ffd700;
+            border-left: 2px solid #ffd700;
+            transform: translateX(5px);
+        }
+        
+        /* Scrollbar for lyrics */
+        .lyrics-container::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        .lyrics-container::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+        }
+        
+        .lyrics-container::-webkit-scrollbar-thumb {
+            background: rgba(255, 105, 180, 0.5);
+            border-radius: 3px;
+        }
+        
+        /* Image Gallery Section */
+        .image-gallery {
+            position: absolute;
+            bottom: 180px;
+            left: 40px;
+            width: 300px;
+            opacity: 0;
+            transform: translateX(-30px);
+            animation: fadeInLeft 1.5s ease forwards 2.5s;
+            z-index: 10;
+        }
+        
+        .image-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .image-placeholder {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, rgba(255, 182, 193, 0.3), rgba(221, 160, 221, 0.4));
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 15px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .image-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+            transition: transform 0.5s ease;
+        }
+        
+        .image-placeholder:hover img {
+            transform: scale(1.05);
+        }
+        
+        .image-placeholder i {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .image-caption {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            text-align: center;
+            font-style: italic;
+        }
+        
+        /* Upload button */
+        .upload-btn {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        
+        .upload-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInRight {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes fadeInLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            33% {
+                transform: translateY(-30px) rotate(120deg);
+            }
+            66% {
+                transform: translateY(30px) rotate(240deg);
+            }
+        }
+        
+        @keyframes floatHearts {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg);
+                opacity: 0.7;
+            }
+            25% {
+                transform: translateY(-40px) translateX(20px) rotate(90deg);
+            }
+            50% {
+                transform: translateY(-20px) translateX(-20px) rotate(180deg);
+                opacity: 0.9;
+            }
+            75% {
+                transform: translateY(-60px) translateX(10px) rotate(270deg);
+            }
+            100% {
+                transform: translateY(0) translateX(0) rotate(360deg);
+                opacity: 0.7;
+            }
+        }
+        
+        @keyframes glowPulse {
+            0%, 100% {
+                box-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
+            }
+            50% {
+                box-shadow: 0 0 25px rgba(255, 105, 180, 0.8);
+            }
+        }
+        
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+        
+        @keyframes candleFloat {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        @keyframes flameFlicker {
+            0% {
+                transform: translateX(-50%) scale(1, 1);
+            }
+            100% {
+                transform: translateX(-50%) scale(1.1, 0.9);
+            }
+        }
+        
+        /* Responsive design */
+        @media (max-width: 1024px) {
+            .main-text {
+                font-size: 4.5rem;
+            }
+            
+            .birthday-number {
+                font-size: 8rem;
+            }
+            
+            .subtext {
+                font-size: 1.3rem;
+                max-width: 600px;
+            }
+            
+            .glass-card {
+                right: 20px;
+                bottom: 180px;
+                width: 280px;
+            }
+            
+            .image-gallery {
+                left: 20px;
+                bottom: 180px;
+                width: 280px;
+            }
+            
+            .song-info {
+                right: 20px;
+            }
+            
+            .lyrics-container {
+                left: 20px;
+                width: 280px;
+                max-height: 180px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-container {
+                height: auto;
+                min-height: 100vh;
+            }
+            
+            .main-text {
+                font-size: 3.5rem;
+            }
+            
+            .birthday-number {
+                font-size: 6rem;
+            }
+            
+            .birthday-number::before, .birthday-number::after {
+                font-size: 3rem;
+                margin: 0 10px;
+            }
+            
+            .subtext {
+                font-size: 1.1rem;
+                padding: 0 15px;
+            }
+            
+            .candle-container {
+                height: 120px;
+            }
+            
+            .candle {
+                width: 20px;
+                height: 80px;
+                margin: 0 8px;
+            }
+            
+            .candle:nth-child(2n) {
+                height: 85px;
+            }
+            
+            .candle:nth-child(3n) {
+                height: 75px;
+            }
+            
+            .cta-button {
+                padding: 15px 30px;
+                font-size: 1.1rem;
+            }
+            
+            .glass-card {
+                position: relative;
+                bottom: auto;
+                right: auto;
+                width: 90%;
+                max-width: 400px;
+                margin-top: 30px;
+                transform: translateY(30px);
+                animation: fadeInUp 1.5s ease forwards 2s;
+            }
+            
+            .image-gallery {
+                position: relative;
+                bottom: auto;
+                left: auto;
+                width: 90%;
+                max-width: 400px;
+                margin-top: 30px;
+                transform: translateY(30px);
+                animation: fadeInUp 1.5s ease forwards 2.5s;
+            }
+            
+            .song-info {
+                position: relative;
+                top: auto;
+                right: auto;
+                width: 90%;
+                max-width: 400px;
+                margin-top: 30px;
+                transform: translateY(30px);
+                animation: fadeInUp 1.5s ease forwards 3s;
+            }
+            
+            .lyrics-container {
+                position: relative;
+                top: auto;
+                left: auto;
+                width: 90%;
+                max-width: 400px;
+                margin-top: 30px;
+                transform: translateY(30px);
+                animation: fadeInUp 1.5s ease forwards 3.5s;
+                max-height: 200px;
+            }
+            
+            .content {
+                justify-content: flex-start;
+                padding-top: 120px;
+                padding-bottom: 60px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-container {
+                border-radius: 16px;
+                height: auto;
+            }
+            
+            body {
+                padding: 10px;
+            }
+            
+            .main-text {
+                font-size: 2.8rem;
+            }
+            
+            .birthday-number {
+                font-size: 5rem;
+            }
+            
+            .subtext {
+                font-size: 1rem;
+            }
+            
+            .candle-container {
+                height: 100px;
+            }
+            
+            .candle {
+                width: 15px;
+                height: 70px;
+                margin: 0 5px;
+            }
+            
+            .cta-button {
+                padding: 14px 28px;
+                font-size: 1rem;
+            }
+            
+            .music-toggle {
+                top: 20px;
+                left: 20px;
+                width: 50px;
+                height: 50px;
+            }
+            
+            .image-placeholder {
+                height: 180px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero-container">
+        <!-- Background with parallax -->
+        <div class="background" id="background"></div>
+        
+        <!-- Floating particles -->
+        <div class="particles" id="particles"></div>
+        
+        <!-- Floating hearts -->
+        <div class="hearts" id="hearts"></div>
+        
+        <!-- Music toggle -->
+        <div class="music-toggle" id="musicToggle">
+            <i class="fas fa-music"></i>
+        </div>
+        
+        <!-- Song Info -->
+        <div class="song-info">
+            <h4><i class="fas fa-play-circle"></i> Nviiri - Sweetie</h4>
+            <p>"Happy Birthday" Song</p>
+            <p><small>Click music button to play</small></p>
+        </div>
+        
+        <!-- Lyrics Display -->
+        <div class="lyrics-container">
+            <h4><i class="fas fa-music"></i> Song Lyrics</h4>
+            <div class="lyrics-content" id="lyricsContent">
+                <!-- Lyrics will be loaded here -->
+                <div class="lyrics-line">Happy birthday to you, my sweetie</div>
+                <div class="lyrics-line">May all your dreams come true</div>
+                <div class="lyrics-line">On this special day I celebrate you</div>
+                <div class="lyrics-line">My love, my heart, my everything</div>
+                <div class="lyrics-line">You make my world complete</div>
+                <div class="lyrics-line">Happy birthday, my sweetie</div>
+                <div class="lyrics-line">I love you endlessly</div>
+            </div>
+        </div>
+        
+        <!-- Main content -->
+        <div class="content">
+            <div class="birthday-number" id="birthdayNumber">
+                22
+            </div>
+            
+            <h1 class="main-text">Happy Birthday, My Love ❤️</h1>
+            <p class="subtext">Today we celebrate you — your smile, your strength, your beautiful soul.</p>
+            <button class="cta-button" id="surpriseButton">
+                <span>A Surprise for You</span>
+                <i class="fas fa-gift"></i>
+            </button>
+        </div>
+        
+        <!-- Birthday Candles -->
+        <div class="candle-container" id="candleContainer">
+            <!-- Candles will be generated by JavaScript -->
+        </div>
+        
+        <!-- Glassmorphism card -->
+        <div class="glass-card">
+            <h3>To the Most Amazing Person</h3>
+            <p>Every moment with you is a treasure to me . On your special day, I wish you all the joy, love, and happiness you bring to me. You deserve the world and more.</p>
+        </div>
+        
+        <!-- Image Gallery Section -->
+        <div class="image-gallery">
+            <div class="image-container">
+                <div class="image-placeholder" id="imagePlaceholder">
+                    <!-- Default placeholder content -->
+                    <i class="fas fa-heart"></i>
+                    <p>Your Photo Here</p>
+                    <!-- Image will be loaded here by JavaScript -->
+                </div>
+                <p class="image-caption">The most beautiful 22-year-old I know 💕</p>
+            </div>
+            
+            <button class="upload-btn" id="uploadBtn">
+                <i class="fas fa-image"></i>
+                Load More Memories
+            </button>
+        </div>
+    </div>
+    
+    <!-- Audio for Nviiri's "Sweetie" birthday song -->
+    <!-- Option 1: Direct MP3 Link (if you have it) -->
+    <audio id="backgroundMusic" loop>
+        <source src="https://example.com/nviiri-sweetie.mp3" type="audio/mpeg">
+        <!-- Fallback to YouTube audio if direct link doesn't work -->
+        <source src="https://www.youtube.com/audiolibrary_download?vid=YOUR_VIDEO_ID" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    
+    <!-- Option 2: Embedded YouTube Video (alternative if MP3 not available) -->
+    <div id="youtubePlayer" style="display: none;"></div>
+    
+    <!-- Option 3: Fallback romantic music -->
+    <audio id="fallbackMusic" loop>
+        <source src="https://assets.codepen.io/1468070/romantic-piano.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    
+    <script>
+        // Initialize elements
+        const background = document.getElementById('background');
+        const particlesContainer = document.getElementById('particles');
+        const heartsContainer = document.getElementById('hearts');
+        const musicToggle = document.getElementById('musicToggle');
+        const backgroundMusic = document.getElementById('backgroundMusic');
+        const fallbackMusic = document.getElementById('fallbackMusic');
+        const surpriseButton = document.getElementById('surpriseButton');
+        const imagePlaceholder = document.getElementById('imagePlaceholder');
+        const uploadBtn = document.getElementById('uploadBtn');
+        const candleContainer = document.getElementById('candleContainer');
+        const birthdayNumber = document.getElementById('birthdayNumber');
+        const lyricsContent = document.getElementById('lyricsContent');
+        
+        // Sample images from PostImage links (free romantic/birthday images)
+        const sampleImages = [
+            "https://i.postimg.cc/QdzM5QR6/Whats_App_Image_2026_01_31_at_23_12_25.jpg",
+            "https://i.postimg.cc/7YTyQnyK/Whats_App_Image_2026_02_01_at_09_46_04.jpg",
+            "https://i.postimg.cc/KYDqHRz0/Whats_App_Image_2026_01_31_at_23_12_24.jpg",
+            "https://i.postimg.cc/7YTyQnyK/Whats_App_Image_2026_02_01_at_09_46_04.jpg",
+           
+        ];
+        
+        // Nviiri "Sweetie" lyrics (custom birthday version)
+        const nviiriLyrics = [
+            "Happy birthday to you, my sweetie",
+            "May all your dreams come true",
+            "On this special day I celebrate you",
+            "My love, my heart, my everything",
+            "You make my world complete",
+            "Happy birthday, my sweetie",
+            "I love you endlessly",
+            "Twenty-two looks beautiful on you",
+            "Shining brighter than the morning dew",
+            "Every moment with you is a blessing",
+            "Your smile is my favorite thing",
+            "Happy birthday, my queen",
+            "The most beautiful I've ever seen",
+            "Here's to more years of love and laughter",
+            "And happily ever after",
+            "Happy birthday, my sweetie"
+        ];
+        
+        // Current image index
+        let currentImageIndex = 0;
+        let currentLyricIndex = 0;
+        let lyricsInterval;
+        
+        // Create 22 candles for the birthday
+        function createBirthdayCandles() {
+            for (let i = 0; i < 22; i++) {
+                const candle = document.createElement('div');
+                candle.className = 'candle';
+                
+                const flame = document.createElement('div');
+                flame.className = 'flame';
+                
+                candle.appendChild(flame);
+                candleContainer.appendChild(candle);
+                
+                // Add blowing out effect on click
+                candle.addEventListener('click', function() {
+                    blowOutCandle(this);
+                });
+            }
+        }
+        
+        // Initialize lyrics display
+        function initializeLyrics() {
+            // Clear existing lyrics
+            lyricsContent.innerHTML = '';
+            
+            // Add all lyrics
+            nviiriLyrics.forEach((line, index) => {
+                const lyricLine = document.createElement('div');
+                lyricLine.className = 'lyrics-line';
+                lyricLine.textContent = line;
+                lyricLine.dataset.index = index;
+                lyricsContent.appendChild(lyricLine);
+            });
+        }
+        
+        // Start lyrics animation
+        function startLyricsAnimation() {
+            const lines = document.querySelectorAll('.lyrics-line');
+            
+            // Clear any existing interval
+            if (lyricsInterval) clearInterval(lyricsInterval);
+            
+            // Reset all lines
+            lines.forEach(line => line.classList.remove('active'));
+            
+            // Start new animation
+            currentLyricIndex = 0;
+            lyricsInterval = setInterval(() => {
+                // Remove active class from all lines
+                lines.forEach(line => line.classList.remove('active'));
+                
+                // Add active class to current line
+                if (lines[currentLyricIndex]) {
+                    lines[currentLyricIndex].classList.add('active');
+                    
+                    // Scroll to active line
+                    lines[currentLyricIndex].scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'center'
+                    });
+                }
+                
+                // Move to next line
+                currentLyricIndex = (currentLyricIndex + 1) % lines.length;
+            }, 3000); // Change line every 3 seconds
+        }
+        
+        // Stop lyrics animation
+        function stopLyricsAnimation() {
+            if (lyricsInterval) {
+                clearInterval(lyricsInterval);
+                lyricsInterval = null;
+            }
+            
+            // Remove active class from all lines
+            document.querySelectorAll('.lyrics-line').forEach(line => {
+                line.classList.remove('active');
+            });
+        }
+        
+        // Load Nviiri song (with multiple options)
+        function loadNviiriSong() {
+            // Try multiple sources for Nviiri's "Sweetie"
+            const audioSources = [
+                // Option 1: Direct MP3 link (replace with actual link)
+                "https://example.com/nviiri-sweetie.mp3",
+                
+                // Option 2: YouTube to MP3 converted link
+                "https://assets.codepen.io/1468070/nviiri-sweetie-birthday.mp3",
+                
+                // Option 3: Alternative source
+                "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" // Placeholder
+            ];
+            
+            // Try each source until one works
+            let currentSourceIndex = 0;
+            
+            function tryNextSource() {
+                if (currentSourceIndex < audioSources.length) {
+                    backgroundMusic.src = audioSources[currentSourceIndex];
+                    backgroundMusic.load();
+                    backgroundMusic.play().then(() => {
+                        console.log("Playing Nviiri - Sweetie from source", currentSourceIndex + 1);
+                        startLyricsAnimation();
+                    }).catch(e => {
+                        console.log("Source", currentSourceIndex + 1, "failed, trying next...");
+                        currentSourceIndex++;
+                        tryNextSource();
+                    });
+                } else {
+                    // All sources failed, use fallback
+                    console.log("All Nviiri sources failed, using fallback music");
+                    fallbackMusic.play().catch(e => {
+                        console.log("Fallback also failed");
+                        alert("Click the music button again to play background music.");
+                    });
+                }
+            }
+            
+            // Start trying sources
+            tryNextSource();
+        }
+        
+        // Blow out a candle
+        function blowOutCandle(candle) {
+            const flame = candle.querySelector('.flame');
+            flame.style.animation = 'none';
+            flame.style.opacity = '0';
+            flame.style.transform = 'translateX(-50%) scale(0.5)';
+            flame.style.transition = 'all 0.3s ease';
+            
+            // Add smoke effect
+            const smoke = document.createElement('div');
+            smoke.style.position = 'absolute';
+            smoke.style.top = '-60px';
+            smoke.style.left = '50%';
+            smoke.style.transform = 'translateX(-50%)';
+            smoke.style.width = '20px';
+            smoke.style.height = '20px';
+            smoke.style.background = 'rgba(200, 200, 200, 0.8)';
+            smoke.style.borderRadius = '50%';
+            smoke.style.filter = 'blur(5px)';
+            smoke.style.zIndex = '6';
+            
+            candle.appendChild(smoke);
+            
+            // Animate smoke
+            const smokeAnimation = smoke.animate([
+                { transform: 'translateX(-50%) scale(1)', opacity: 0.8, top: '-60px' },
+                { transform: 'translateX(-50%) scale(3)', opacity: 0, top: '-100px' }
+            ], {
+                duration: 1000,
+                easing: 'ease-out'
+            });
+            
+            smokeAnimation.onfinish = () => {
+                smoke.remove();
+            };
+            
+            // Make candle unclickable after being blown out
+            candle.style.pointerEvents = 'none';
+            
+            // Check if all candles are blown out
+            checkAllCandlesBlown();
+        }
+        
+        // Check if all candles are blown out
+        function checkAllCandlesBlown() {
+            const candles = document.querySelectorAll('.candle');
+            let blownOutCount = 0;
+            
+            candles.forEach(candle => {
+                const flame = candle.querySelector('.flame');
+                if (flame.style.opacity === '0') {
+                    blownOutCount++;
+                }
+            });
+            
+            // If all candles are blown out, show a celebration
+            if (blownOutCount === 22) {
+                celebrateAllCandlesBlown();
+            }
+        }
+        
+        // Celebration when all candles are blown out
+        function celebrateAllCandlesBlown() {
+            // Create celebration text
+            const celebration = document.createElement('div');
+            celebration.innerHTML = `
+                <div style="
+                    position: fixed;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    background: rgba(255, 255, 255, 0.15);
+                    backdrop-filter: blur(15px);
+                    border: 1px solid rgba(255, 255, 255, 0.2);
+                    padding: 30px;
+                    border-radius: 20px;
+                    text-align: center;
+                    max-width: 500px;
+                    width: 90%;
+                    z-index: 1000;
+                    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+                    animation: fadeIn 0.5s ease;
+                ">
+                    <h2 style="font-family: 'Dancing Script', cursive; font-size: 2.5rem; margin-bottom: 20px; color: #ffd700;">
+                        🎉 You Did It! 🎉
+                    </h2>
+                    <p style="font-size: 1.2rem; line-height: 1.6; margin-bottom: 25px;">
+                        You've blown out all 22 candles! Your wish will come true!<br>
+                        Happy 22nd Birthday, my love! 🥳
+                    </p>
+                    <button id="closeCelebration" style="
+                        background: rgba(255, 105, 180, 0.7);
+                        border: none;
+                        color: white;
+                        padding: 12px 30px;
+                        border-radius: 50px;
+                        font-size: 1rem;
+                        cursor: pointer;
+                        transition: all 0.3s ease;
+                    ">
+                        Continue Celebration
+                    </button>
+                </div>
+            `;
+            
+            // Add fadeIn animation
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes fadeIn {
+                    from { opacity: 0; transform: translate(-50%, -60%); }
+                    to { opacity: 1; transform: translate(-50%, -50%); }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            document.body.appendChild(celebration);
+            
+            // Close button functionality
+            celebration.querySelector('#closeCelebration').addEventListener('click', function() {
+                celebration.style.animation = 'fadeOut 0.5s ease forwards';
+                
+                // Add fadeOut animation
+                const fadeOutStyle = document.createElement('style');
+                fadeOutStyle.textContent = `
+                    @keyframes fadeOut {
+                        from { opacity: 1; transform: translate(-50%, -50%); }
+                        to { opacity: 0; transform: translate(-50%, -40%); }
+                    }
+                `;
+                document.head.appendChild(fadeOutStyle);
+                
+                setTimeout(() => {
+                    if (celebration.parentNode) {
+                        celebration.parentNode.removeChild(celebration);
+                    }
+                }, 500);
+            });
+            
+            // Create a burst of confetti
+            createConfettiBurst();
+        }
+        
+        // Load initial image
+        function loadInitialImage() {
+            const img = document.createElement('img');
+            img.src = sampleImages[currentImageIndex];
+            img.alt = "Beautiful memory";
+            img.onload = () => {
+                // Clear placeholder content
+                imagePlaceholder.innerHTML = '';
+                imagePlaceholder.appendChild(img);
+            };
+            img.onerror = () => {
+                // If image fails to load, show placeholder
+                imagePlaceholder.innerHTML = `
+                    <i class="fas fa-heart"></i>
+                    <p>Your Photo Here</p>
+                    <p><small>Add your own image URL</small></p>
+                `;
+            };
+        }
+        
+        // Load next image
+        function loadNextImage() {
+            currentImageIndex = (currentImageIndex + 1) % sampleImages.length;
+            const img = document.createElement('img');
+            img.src = sampleImages[currentImageIndex];
+            img.alt = "Beautiful memory";
+            
+            // Add fade out effect
+            imagePlaceholder.style.opacity = '0.5';
+            imagePlaceholder.style.transition = 'opacity 0.3s ease';
+            
+            setTimeout(() => {
+                imagePlaceholder.innerHTML = '';
+                imagePlaceholder.appendChild(img);
+                imagePlaceholder.style.opacity = '1';
+            }, 300);
+            
+            // Add animation to image container
+            imagePlaceholder.parentElement.style.transform = 'scale(0.98)';
+            setTimeout(() => {
+                imagePlaceholder.parentElement.style.transform = 'scale(1)';
+            }, 200);
+        }
+        
+        // Create floating particles
+        function createParticles() {
+            const particleCount = 80;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Random size and position
+                const size = Math.random() * 6 + 2;
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                
+                // Apply styles
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${posX}%`;
+                particle.style.top = `${posY}%`;
+                
+                // Random color
+                const colors = [
+                    'rgba(255, 182, 193, 0.7)', 
+                    'rgba(255, 215, 0, 0.7)', 
+                    'rgba(221, 160, 221, 0.7)', 
+                    'rgba(255, 255, 255, 0.8)'
+                ];
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.background = color;
+                
+                // Random animation duration
+                const duration = Math.random() * 20 + 15;
+                particle.style.animationDuration = `${duration}s`;
+                
+                // Random animation delay
+                const delay = Math.random() * 5;
+                particle.style.animationDelay = `${delay}s`;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
+        // Create floating hearts
+        function createHearts() {
+            const heartCount = 30;
+            
+            for (let i = 0; i < heartCount; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.innerHTML = '❤️';
+                
+                // Random position
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                
+                heart.style.left = `${posX}%`;
+                heart.style.top = `${posY}%`;
+                
+                // Random size
+                const size = Math.random() * 30 + 20;
+                heart.style.fontSize = `${size}px`;
+                
+                // Random animation duration
+                const duration = Math.random() * 30 + 20;
+                heart.style.animationDuration = `${duration}s`;
+                
+                // Random animation delay
+                const delay = Math.random() * 10;
+                heart.style.animationDelay = `${delay}s`;
+                
+                heartsContainer.appendChild(heart);
+            }
+        }
+        
+        // Create confetti burst
+        function createConfettiBurst() {
+            const confettiColors = ['#ff69b4', '#ffd700', '#87ceeb', '#98fb98', '#ffa07a'];
+            
+            for (let i = 0; i < 150; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.style.position = 'fixed';
+                    confetti.style.width = '10px';
+                    confetti.style.height = '10px';
+                    confetti.style.backgroundColor = confettiColors[Math.floor(Math.random() * confettiColors.length)];
+                    confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+                    confetti.style.top = '50%';
+                    confetti.style.left = '50%';
+                    confetti.style.zIndex = '1000';
+                    confetti.style.opacity = '0.9';
+                    
+                    document.body.appendChild(confetti);
+                    
+                    // Animate confetti
+                    const angle = Math.random() * Math.PI * 2;
+                    const distance = 300 + Math.random() * 300;
+                    const duration = 1000 + Math.random() * 1000;
+                    
+                    const animation = confetti.animate([
+                        { transform: 'translate(-50%, -50%) scale(1)', opacity: 0.9 },
+                        { transform: `translate(${Math.cos(angle) * distance}px, ${Math.sin(angle) * distance - 300}px) scale(0.2) rotate(${Math.random() * 360}deg)`, opacity: 0 }
+                    ], {
+                        duration: duration,
+                        easing: 'cubic-bezier(0.215, 0.610, 0.355, 1)'
+                    });
+                    
+                    // Remove confetti after animation
+                    animation.onfinish = () => {
+                        if (confetti.parentNode) {
+                            confetti.parentNode.removeChild(confetti);
+                        }
+                    };
+                }, i * 10);
+            }
+        }
+        
+        // Parallax effect on mouse move
+        function handleParallax(e) {
+            const x = (e.clientX / window.innerWidth) * 20 - 10;
+            const y = (e.clientY / window.innerHeight) * 20 - 10;
+            
+            background.style.transform = `translate(${x}px, ${y}px)`;
+        }
+        
+        // Music toggle functionality
+        let musicPlaying = false;
+        
+        musicToggle.addEventListener('click', () => {
+            if (musicPlaying) {
+                backgroundMusic.pause();
+                fallbackMusic.pause();
+                musicToggle.innerHTML = '<i class="fas fa-music"></i>';
+                musicToggle.style.background = 'rgba(255, 255, 255, 0.1)';
+                stopLyricsAnimation();
+            } else {
+                loadNviiriSong();
+                musicToggle.innerHTML = '<i class="fas fa-pause"></i>';
+                musicToggle.style.background = 'rgba(255, 105, 180, 0.3)';
+            }
+            
+            musicPlaying = !musicPlaying;
+        });
+        
+        // Surprise button functionality
+        surpriseButton.addEventListener('click', () => {
+            // Create a burst of hearts
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.classList.add('heart');
+                    heart.innerHTML = '❤️';
+                    heart.style.position = 'fixed';
+                    heart.style.left = '50%';
+                    heart.style.top = '60%';
+                    heart.style.fontSize = `${Math.random() * 40 + 20}px`;
+                    heart.style.zIndex = '100';
+                    heart.style.opacity = '0.9';
+                    heart.style.transform = 'translate(-50%, -50%) scale(1)';
+                    
+                    // Random animation
+                    const moveX = (Math.random() - 0.5) * 200;
+                    const moveY = -Math.random() * 150 - 50;
+                    
+                    heart.style.animation = `none`;
+                    
+                    document.body.appendChild(heart);
+                    
+                    // Animate heart
+                    const animation = heart.animate([
+                        { transform: 'translate(-50%, -50%) scale(1)', opacity: 0.9 },
+                        { transform: `translate(${moveX - 50}%, ${moveY}%) scale(0.5)`, opacity: 0 }
+                    ], {
+                        duration: 2000,
+                        easing: 'cubic-bezier(0.215, 0.610, 0.355, 1)'
+                    });
+                    
+                    // Remove heart after animation
+                    animation.onfinish = () => {
+                        heart.remove();
+                    };
+                }, i * 30);
+            }
+            
+            // Change button text temporarily
+            const originalText = surpriseButton.innerHTML;
+            surpriseButton.innerHTML = '<i class="fas fa-heart"></i> You Are The Surprise! <i class="fas fa-heart"></i>';
+            surpriseButton.style.background = 'linear-gradient(135deg, #ff1493, #ff69b4)';
+            
+            setTimeout(() => {
+                surpriseButton.innerHTML = originalText;
+                surpriseButton.style.background = 'linear-gradient(135deg, #ff69b4, #ff1493)';
+            }, 3000);
+            
+            // Also change the image
+            loadNextImage();
+            
+            // Create confetti burst
+            createConfettiBurst();
+        });
+        
+        // Upload button functionality
+        uploadBtn.addEventListener('click', () => {
+            // Show a custom URL input dialog
+            const imageUrl = prompt("Enter an image URL (from PostImages or any image hosting site):\n\nYou can use:\n- Unsplash links\n- Imgur links\n- PostImage links\n- Any direct image URL", sampleImages[0]);
+            
+            if (imageUrl && imageUrl.trim() !== '') {
+                const img = document.createElement('img');
+                img.src = imageUrl.trim();
+                img.alt = "Your special memory";
+                img.onload = () => {
+                    // Clear placeholder and add new image
+                    imagePlaceholder.innerHTML = '';
+                    imagePlaceholder.appendChild(img);
+                    
+                    // Show success message
+                    const originalText = uploadBtn.innerHTML;
+                    uploadBtn.innerHTML = '<i class="fas fa-check"></i> Image Loaded!';
+                    uploadBtn.style.background = 'rgba(0, 200, 0, 0.3)';
+                    
+                    setTimeout(() => {
+                        uploadBtn.innerHTML = originalText;
+                        uploadBtn.style.background = '';
+                    }, 2000);
+                };
+                img.onerror = () => {
+                    alert("Could not load image from that URL. Please check the link and try again.");
+                };
+            }
+        });
+        
+        // Add birthday number animation
+        birthdayNumber.addEventListener('click', function() {
+            this.style.transform = 'scale(1.2)';
+            this.style.color = '#ff69b4';
+            this.style.transition = 'all 0.3s ease';
+            
+            setTimeout(() => {
+                this.style.transform = 'scale(1)';
+                this.style.color = '#ffd700';
+            }, 300);
+            
+            // Play a birthday sound effect
+            const birthdaySound = new Audio('https://assets.codepen.io/1468070/birthday-sound.mp3');
+            birthdaySound.volume = 0.5;
+            birthdaySound.play().catch(e => console.log("Sound play failed"));
+        });
+        
+        // Initialize the scene
+        createParticles();
+        createHearts();
+        createBirthdayCandles();
+        initializeLyrics();
+        loadInitialImage();
+        
+        // Add parallax effect on mouse move
+        document.addEventListener('mousemove', handleParallax);
+        
+        // Add parallax effect on mobile with device orientation
+        if (window.DeviceOrientationEvent) {
+            window.addEventListener('deviceorientation', (e) => {
+                const x = (e.gamma || 0) / 10;
+                const y = (e.beta || 0) / 20;
+                
+                background.style.transform = `translate(${x}px, ${y}px)`;
+            });
+        }
+        
+        // Auto-cycle images every 10 seconds
+        setInterval(loadNextImage, 10000);
+        
+        // Show a birthday greeting in the console
+        console.log("%c🎂 Happy 22nd Birthday! 🎂", "color: #ff69b4; font-size: 24px; font-weight: bold;");
+        console.log("%cWishing you the most magical 22nd birthday filled with love and joy!", "color: #ffd700; font-size: 16px;");
+        console.log("%cNow playing: Nviiri - Sweetie (Birthday Version)", "color: #87ceeb; font-size: 14px;");
+        console.log("%cTip: Click the candles to blow them out! Try to blow out all 22!", "color: #ff69b4; font-size: 14px;");
+    </script>
+</body>
+</html>
